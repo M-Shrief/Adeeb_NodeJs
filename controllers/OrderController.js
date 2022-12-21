@@ -18,11 +18,9 @@ const post = async (req, res) => {
     name: req.body.name,
     phone: req.body.phone,
     address: req.body.address,
-    print: req.body.print,
     reviewed: req.body.reviewed,
-    textColor: req.body.textColor,
-    textType: req.body.textType,
-    backgroundColor: req.body.clothesColor,
+    completed: req.body.completed,
+    products: req.body.products
   })
   
   try {

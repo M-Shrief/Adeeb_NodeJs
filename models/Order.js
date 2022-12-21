@@ -7,32 +7,24 @@ const orderSchema = new Schema({
     required: true
   },
   phone: {
-    type: Number,
+    type: String,
     required: true
   },
   address: {
     type: String,
     required: true
   },
-  print: {
-    type: Object,
-    required: true
-  },
   reviewed: {
     type: Boolean,
     default: false
   },
-  backgroundColor: {
-    type: String,
-    default: '#000'
+  completed: {
+    type: Boolean,
+    default: false
   },
-  textType: {
-    type: String,
-    default: 'كوفي'
-  },
-  textColor: {
-    type: String,
-    default: '#fff'
+  products: {
+    type: Object,
+    required: true
   }
 }, {timestamps: true})
 
