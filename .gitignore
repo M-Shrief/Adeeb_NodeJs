@@ -1,3 +1,5 @@
 /node_modules
 /adeeb_vue_js
+/adeeb_vue_js/node_modules
+/adeeb_vue_js/src/components/__tests__
 /mongodb_json

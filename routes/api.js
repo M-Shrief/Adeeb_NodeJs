@@ -32,7 +32,7 @@ router.delete('/prose/:id', proseController.destroy);
 
 
 router.get('/orders', orderController.index);
-router.get('/order/:id', orderController.indexOne);
+router.get('/order/:name/:phone', orderController.indexOne);
 router.post('/order', orderController.post)
 router.put('/order/:id', orderController.update);
 router.delete('/order/:id', orderController.destroy);

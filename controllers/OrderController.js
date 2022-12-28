@@ -1,4 +1,5 @@
 const Order =  require('../models/Order');
+const DOMPurify = require('isomorphic-dompurify');
 
 const index = (req, res) => {
   Order.find().then(result => {
@@ -8,19 +9,25 @@ const index = (req, res) => {
 }
 
 const indexOne = (req, res) => {
-  Order.find({_id: req.params.id}).then(order => {
+  Order.find({name: req.params.name, phone: req.params.phone}).then(order => {
     res.send(order);
   })
 }
 
 const post = async (req, res) => {
+  let name = DOMPurify.sanitize(req.body.name);
+  let phone = DOMPurify.sanitize(req.body.phone);
+  let address = DOMPurify.sanitize(req.body.address);
+  let reviewed = DOMPurify.sanitize(req.body.reviewed);
+  let completed = DOMPurify.sanitize(req.body.completed);
+  let products = DOMPurify.sanitize(req.body.products);
   const order = new Order({
-    name: req.body.name,
-    phone: req.body.phone,
-    address: req.body.address,
-    reviewed: req.body.reviewed,
-    completed: req.body.completed,
-    products: req.body.products
+    name,
+    phone,
+    address,
+    reviewed,
+    completed,
+    products
   })
   
   try {
