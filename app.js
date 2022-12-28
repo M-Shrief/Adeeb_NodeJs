@@ -13,12 +13,12 @@ const api = require('./routes/api');
 const app = express()
 app.use(helmet());
 // Allow cross origin requests
-app.use(
-  cors({
-    origin: 'http://localhost:3000', // restrict calls to those this address
-    methods: 'GET', // only allow GET requests
-  })
-);
+// app.use(
+//   cors({
+//     origin: 'http://localhost:3000', // restrict calls to those this address
+//     methods: 'GET', // only allow GET requests
+//   })
+// );
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
