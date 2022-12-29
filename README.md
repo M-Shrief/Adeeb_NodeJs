@@ -1,4 +1,4 @@
-# "Adeeb آديب" NodeJS/Express.JS API
+# "Adeeb أديب" NodeJS/Express.JS API
 
 A Node/Express API, tested by **postman**, to make crud request to "Adeeb آديب" **MongoDB** databese.
 Our models: Poet, Poem, ChosenVerse, Prose, Order. 
