@@ -18,9 +18,9 @@ const post = async (req, res) => {
   let name = DOMPurify.sanitize(req.body.name);
   let phone = DOMPurify.sanitize(req.body.phone);
   let address = DOMPurify.sanitize(req.body.address);
-  let reviewed = DOMPurify.sanitize(req.body.reviewed);
-  let completed = DOMPurify.sanitize(req.body.completed);
-  let products = DOMPurify.sanitize(req.body.products);
+  let reviewed = req.body.reviewed;
+  let completed = req.body.completed;
+  let products = req.body.products;
   const order = new Order({
     name,
     phone,
