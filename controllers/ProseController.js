@@ -7,6 +7,13 @@ const indexWithPoet = (req, res) => {
   .catch(err => console.log(err));
 }
 
+const indexRandom = (req, res) => {
+  Prose.aggregate([{$sample: {size: Number(req.params.size)}}]).then(result => {
+  res.send(result);
+})
+.catch(err => console.log(err));
+};
+
 const indexOneWithPoet = (req, res) => {
   Prose.find({_id: req.params.id}, {poet: 1, tags: 1, qoute: 1, reviewed: 1}).populate('poet', 'name').then(result => {
     res.send(result)
@@ -57,6 +64,7 @@ const destroy = (req,res) => {
 
 module.exports = {
   indexWithPoet,
+  indexRandom,
   indexOneWithPoet,
   post,
   update,

@@ -19,12 +19,14 @@ router.put('/poem/:id', poemController.update);
 router.delete('/poem/:id', poemController.destroy);
 
 router.get('/chosenverses', chosenVerseController.indexWithPoet);
+router.get('/chosenverses_random/:size', chosenVerseController.indexRandom);
 router.get('/chosenverse/:id', chosenVerseController.indexOneWithPoet);
 router.post('/chosenverse', chosenVerseController.post);
 router.put('/chosenverse/:id', chosenVerseController.update);
 router.delete('/chosenverse/:id', chosenVerseController.destroy);
 
 router.get('/proses', proseController.indexWithPoet);
+router.get('/proses_random/:size', proseController.indexRandom);
 router.get('/prose/:id', proseController.indexOneWithPoet);
 router.post('/prose', proseController.post);
 router.put('/prose/:id', proseController.update);

@@ -1,14 +1,14 @@
 const ChosenVerse = require('../models/ChosenVerse');
 
-const index = (req, res) => {
-  ChosenVerse.find({}, {reviewed: 1, tags: 1, verse: 1, poet: 1, poem: 1}).then(result => {
+const indexWithPoet = (req, res) => {
+  ChosenVerse.find({}, {reviewed: 1, tags: 1, verse: 1, poet: 1, poem: 1}).populate('poet', 'name').then(result => {
     res.send(result);
   })
   .catch(err => console.log(err));
 };
 
-const indexWithPoet = (req, res) => {
-  ChosenVerse.find({}, {reviewed: 1, tags: 1, verse: 1,  poet: 1, poem: 1}).populate('poet', 'name').then(result => {
+const indexRandom = (req, res) => {
+    ChosenVerse.aggregate([{$sample: {size: Number(req.params.size)}}]).then(result => {
     res.send(result);
   })
   .catch(err => console.log(err));
@@ -63,7 +63,8 @@ const destroy =  (req, res) => {
   .catch(err => console.log(err));
 }
 module.exports = {
-  index,
+  indexWithPoet,
+  indexRandom,
   indexWithPoet,
   indexOneWithPoet,
   post,
