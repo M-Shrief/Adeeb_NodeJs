@@ -1,7 +1,9 @@
 const ChosenVerse = require('../models/ChosenVerse');
+const {durstenfeldShuffle} = require('../durstenfeldShuffle');
 
 const indexWithPoet = (req, res) => {
   ChosenVerse.find({}, {reviewed: 1, tags: 1, verse: 1, poet: 1, poem: 1}).populate('poet', 'name').then(result => {
+    durstenfeldShuffle(result)
     res.send(result);
   })
   .catch(err => console.log(err));
