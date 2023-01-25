@@ -10,7 +10,7 @@ const index = (req, res) => {
   .catch(err => console.log(err));
 }
 
-const indexOneWithPoemsAndChosenVersesAndProses = async (req, res) => {
+const indexOneWithLiterature = async (req, res) => {
   try {
     const poet = await Poet.find({_id: req.params.id}, {name: 1, bio: 1, time_period: 1})
     const authoredPoems = await Poem.find({poet: req.params.id}, {intro: 1, reviewed: 1})
@@ -69,7 +69,7 @@ const destroy = (req,res) => {
 
 module.exports = {
   index,
-  indexOneWithPoemsAndChosenVersesAndProses,
+  indexOneWithLiterature,
   post,
   update,
   destroy

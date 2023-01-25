@@ -6,7 +6,7 @@ const orderController = require('../controllers/OrderController');
 const proseController = require('../controllers/ProseController');
 
 router.get('/poets', poetController.index);
-router.get('/poet/:id', poetController.indexOneWithPoemsAndChosenVersesAndProses);
+router.get('/poet/:id', poetController.indexOneWithLiterature);
 router.post('/poet', poetController.post);
 router.put('/poet/:id', poetController.update);
 router.delete('/poet/:id', poetController.destroy);
