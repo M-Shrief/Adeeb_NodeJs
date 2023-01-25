@@ -11,11 +11,11 @@ const api = require('./routes/api');
 
 const app = express()
 app.use(helmet());
-// Allow cross origin requests
+
 app.use(
   cors({
-    origin: 'http://localhost:3000', // restrict calls to those this address
-    methods: 'GET', // only allow GET requests
+    origin: 'http://localhost:3000', 
+    methods: 'GET', 
   })
 );
 
@@ -39,9 +39,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.use(hpp());
-// // Add a second HPP middleware to apply the whitelist only to this route.
-// app.use('/search', hpp({ whitelist: [ 'filter' ] }));
-
 
 app.listen(3000, (req, res) => {
   console.log('Listening');  

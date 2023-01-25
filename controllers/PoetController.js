@@ -45,15 +45,15 @@ const post = async (req, res) => {
 }
 
 const  update = (req, res) => {
-    const poet = Poet.find({_id:req.params.id})
+  const poet = Poet.find({_id:req.params.id})
 
-    poet.updateOne({$set: req.body})
-    .then((updatedPoet) => {
-      return res.status(201).json({
-        success: true,
-        Poet: updatedPoet,
-      })
-    }).catch(err => console.log(err))
+  poet.updateOne({$set: req.body})
+  .then((updatedPoet) => {
+    return res.status(201).json({
+      success: true,
+      Poet: updatedPoet,
+    })
+  }).catch(err => console.log(err))
 }
 
 
