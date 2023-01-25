@@ -10,21 +10,17 @@ const index = (req, res) => {
   .catch(err => console.log(err));
 }
 
-const indexOneWithPoemsAndChosenVersesAndProses = (req, res) => {
-  Poet.find({_id: req.params.id}, {name: 1, bio: 1, time_period: 1}).
-  then(poet => {
-    Poem.find({poet: req.params.id}, {intro: 1, reviewed: 1})
-    .then(authoredPoems => {
-      Prose.find({poet: req.params.id}, {tags: 1, qoute: 1})
-      .then(authoredProses => {
-        ChosenVerse.find({poet: req.params.id}, {reviewed: 1, tags: 1, verse: 1, poem: 1})
-        .then(authoredChosenVerses => {
-          res.send({details: poet[0], authoredPoems, authoredChosenVerses, authoredProses});
-        })
-      })
-    })
-  })
-  .catch(err => console.log(err))
+const indexOneWithPoemsAndChosenVersesAndProses = async (req, res) => {
+  try {
+    const poet = await Poet.find({_id: req.params.id}, {name: 1, bio: 1, time_period: 1})
+    const authoredPoems = await Poem.find({poet: req.params.id}, {intro: 1, reviewed: 1})
+    const authoredProses = await Prose.find({poet: req.params.id}, {tags: 1, qoute: 1})
+    const authoredChosenVerses = await ChosenVerse.find({poet: req.params.id}, {reviewed: 1, tags: 1, verse: 1, poem: 1})
+
+    res.send({details: poet[0], authoredPoems, authoredChosenVerses, authoredProses});
+  } catch (err) {
+    return console.log(err);
+  }
 }
 
 
