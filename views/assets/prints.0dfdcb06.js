@@ -1,0 +1,1 @@
+import{j as e}from"./index.f239620d.js";const n=e("print",{state:()=>({prints:[]}),persist:{storage:sessionStorage},getters:{getPrints(t){return t.prints}},actions:{addPrint(t){this.getPrints.includes(t)||this.prints.push(t)},removePrint(t){let s=this.getPrints.map(i=>i._id).indexOf(t._id);this.getPrints.splice(s,1)}}});export{n as u};

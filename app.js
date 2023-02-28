@@ -9,6 +9,7 @@ const api = require('./routes/api');
 require('dotenv').config();
 
 const app = express();
+app.use(express.static('./views'));
 app.use(helmet());
 
 app.use(
@@ -55,7 +56,7 @@ mongoose
   .catch((err) => console.log(err));
 
 app.get('/', (req, res) => {
-  res.sendFile('./views/home.html', { root: __dirname });
+  res.sendFile('./views/index.html', { root: __dirname });
 });
 app.use('/api', api);
 
