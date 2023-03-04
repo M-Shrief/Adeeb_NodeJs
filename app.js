@@ -1,4 +1,5 @@
 const express = require('express');
+const history = require('connect-history-api-fallback');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -9,7 +10,9 @@ const api = require('./routes/api');
 require('dotenv').config();
 
 const app = express();
+app.use(history());
 app.use(express.static('./views'));
+
 app.use(helmet());
 
 app.use(
